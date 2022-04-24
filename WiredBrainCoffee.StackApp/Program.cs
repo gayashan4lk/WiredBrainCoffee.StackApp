@@ -12,20 +12,20 @@ namespace WiredBrainCoffee.StackApp
 
         private static void StackDoubles()
         {
-            var stack = new SimpleStack();
+            var stackDouble = new SimpleStackDouble();
             double sum = 0.0;
 
-            stack.Push(1.2);
-            stack.Push(2.8);
-            stack.Push(3.0);
-            stack.Push(11);
+            stackDouble.Push(1.2);
+            stackDouble.Push(2.8);
+            stackDouble.Push(3.0);
+            /*stack.Push(11);
             stack.Push(true);
             stack.Push("Some string");
-            stack.Push(new object());
+            stack.Push(new object());*/
 
-            while (stack.Count > 0)
+            while (stackDouble.Count > 0)
             {
-                double item = (double)stack.Pop();
+                double item = (double)stackDouble.Pop();
                 Console.WriteLine(item);
                 sum += item;
             }
@@ -35,15 +35,15 @@ namespace WiredBrainCoffee.StackApp
 
         private static void StackStrings()
         {
-            var stack = new SimpleStack();
+            var stackString = new SimpleStackString();
 
-            stack.Push("Wired Brain Coffee");
-            stack.Push("CShrap generics");
-            stack.Push("Pluralsight");
+            stackString.Push("Wired Brain Coffee");
+            stackString.Push("CShrap generics");
+            stackString.Push("Pluralsight");
 
-            while (stack.Count > 0)
+            while (stackString.Count > 0)
             {
-                object item = stack.Pop();
+                object item = stackString.Pop();
                 Console.WriteLine(item);
             }
         }
