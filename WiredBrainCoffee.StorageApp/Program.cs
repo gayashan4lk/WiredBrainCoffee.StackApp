@@ -14,10 +14,12 @@ namespace WiredBrainCoffee.StorageApp
             employeeRepository.Add(new Employee { FirstName = "Basoom" });
             employeeRepository.Save();
 
-            var organizationRepository = new GenericRepository<Organization>();
+            var organizationRepository = new GenericRepositoryWithRemove<Organization>();
             organizationRepository.Add(new Organization { Name = "Apple Inc." });
             organizationRepository.Add(new Organization { Name = "Tesla Inc." });
             organizationRepository.Add(new Organization { Name = "Boring Company" });
+            organizationRepository.Save();
+            organizationRepository.Remove(new Organization { Name = "Boring Company" });
             organizationRepository.Save();
         }
     }
