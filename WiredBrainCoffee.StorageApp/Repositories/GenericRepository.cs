@@ -7,12 +7,19 @@ using WiredBrainCoffee.StorageApp.Entities;
 
 namespace WiredBrainCoffee.StorageApp.Repositories
 {
-    public class GenericRepository<T>
+    public class GenericRepository<T> where T : EntityBase
     {
         protected readonly List<T> _items = new List<T>();
 
+        public T GetById(int id)
+        {
+            return _items.Single(item => item.Id == id);
+        }
+
         public void Add(T item)
         {
+            item.Id = _items.Count + 1;
+            //item.Id = _items.Any() ? _items.Max(item => item.Id) + 1 : 1;
             _items.Add(item);
         }
 
@@ -23,18 +30,7 @@ namespace WiredBrainCoffee.StorageApp.Repositories
                 Console.WriteLine(item);
             }
         }
-    }
 
-    /*public class EmployeeRepositoryWithRemove : GenericRepository<Employee>
-    {
-        public void Remove(Employee employee)
-        {
-            _items.Remove(employee);
-        }
-    }*/
-
-    public class GenericRepositoryWithRemove<T> : GenericRepository<T>
-    {
         public void Remove(T item)
         {
             _items.Remove(item);
