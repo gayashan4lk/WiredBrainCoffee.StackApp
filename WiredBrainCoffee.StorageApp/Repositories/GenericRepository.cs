@@ -7,23 +7,13 @@ using WiredBrainCoffee.StorageApp.Entities;
 
 namespace WiredBrainCoffee.StorageApp.Repositories
 {
-    public class GenericRepository<T> where T : class, IEntity, new()
+    public class GenericRepository<T> where T : IEntity
     {
         protected readonly List<T> _items = new List<T>();
-
-        public T createItem()
-        {
-            return new T();
-        }
-
 
         public T GetById(int id)
         {
             return _items.Single(item => item.Id == id);
-
-            //return null;
-            //return default(T);
-            //return default;
         }
 
         public void Add(T item)
